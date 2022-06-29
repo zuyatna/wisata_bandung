@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
+var informationTextStyle = const TextStyle(fontFamily: 'Oxygen');
+
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class DetailScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Staatliches',
                 ),
               ),
             ), // Title
@@ -29,24 +30,24 @@ class DetailScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Column(
-                    children: const <Widget>[
-                      Icon(Icons.calendar_today),
-                      SizedBox(height: 8.0),
-                      Text('Open Everyday')
+                    children: <Widget>[
+                      const Icon(Icons.calendar_today),
+                      const SizedBox(height: 8.0),
+                      Text('Open Everyday', style: informationTextStyle,)
                     ],
                   ), // Calendar
                   Column(
-                    children: const <Widget>[
-                      Icon(Icons.access_time_outlined),
-                      SizedBox(height: 8.0),
-                      Text('09:00 - 20.00')
+                    children: <Widget>[
+                      const Icon(Icons.access_time_outlined),
+                      const SizedBox(height: 8.0),
+                      Text('09:00 - 20.00', style: informationTextStyle,)
                     ],
                   ), // Access_Time
                   Column(
-                    children: const <Widget>[
-                      Icon(Icons.attach_money_rounded),
-                      SizedBox(height: 8.0),
-                      Text('RP.25000')
+                    children: <Widget>[
+                      const Icon(Icons.attach_money_rounded),
+                      const SizedBox(height: 8.0),
+                      Text('RP.25000', style: informationTextStyle,)
                     ],
                   ), // Money
                 ],
