@@ -21,13 +21,18 @@ class DetailScreen extends StatelessWidget {
                 SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.grey,
-                      child: IconButton(
-                        icon: const Icon(Icons.arrow_back, color: Colors.white,),
-                        onPressed: () { Navigator.pop(context); },
-                      ),
-                    ),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.grey,
+                          child: IconButton(
+                            icon: const Icon(Icons.arrow_back, color: Colors.white,),
+                            onPressed: () { Navigator.pop(context); },
+                          ),
+                        ),
+                        const FavoriteButton()
+                      ],
+                    )
                   ),
                 ),
               ],
@@ -98,6 +103,32 @@ class DetailScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class FavoriteButton extends StatefulWidget {
+  const FavoriteButton({Key? key}) : super(key: key);
+
+  @override
+  State<FavoriteButton> createState() => _FavoriteButtonState();
+}
+
+class _FavoriteButtonState extends State<FavoriteButton> {
+
+  bool isFavorite = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(onPressed: () {
+      setState(() {
+        isFavorite = !isFavorite;
+      });
+    },
+        icon: Icon(
+          isFavorite ? Icons.favorite : Icons.favorite_border,
+          color: Colors.white,
+        )
     );
   }
 }
