@@ -121,21 +121,21 @@ class _FavoriteButtonState extends State<FavoriteButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: IconButton(onPressed: () {
-        setState(() {
+    return Container(
+      margin: const EdgeInsets.only(left: 8.0),
+      child: CircleAvatar(
+        backgroundColor: Colors.grey,
+        child: IconButton(onPressed: () {
+          setState(() {
             isFavorite = !isFavorite;
-        });
-      },
-          icon: CircleAvatar(
-              backgroundColor: Colors.grey,
-              child: Icon(
-                isFavorite ? Icons.favorite : Icons.favorite_border,
-                color: Colors.white,
-              )
-          ),
-      )
+          });
+        },
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: Colors.white,
+            )
+        ),
+      ),
     );
   }
 }
