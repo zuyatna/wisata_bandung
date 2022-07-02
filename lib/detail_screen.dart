@@ -4,9 +4,10 @@ import 'package:wisata_bandung/model/tourism_place.dart';
 var informationTextStyle = const TextStyle(fontFamily: 'Oxygen');
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({Key? key, required this.place}) : super(key: key);
+  const DetailScreen({Key? key, required this.place, required this.index}) : super(key: key);
 
   final TourismPlace place;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class DetailScreen extends StatelessWidget {
           children: <Widget>[
             Stack(
               children: <Widget>[
-                Image.asset(place.imageAsset),
+                Hero(tag: 'place$index', child: Image.asset(place.imageAsset)),
                 SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -125,10 +126,13 @@ class _FavoriteButtonState extends State<FavoriteButton> {
         isFavorite = !isFavorite;
       });
     },
-        icon: Icon(
-          isFavorite ? Icons.favorite : Icons.favorite_border,
-          color: Colors.white,
-        )
+        icon: CircleAvatar(
+          backgroundColor: Colors.grey,
+          child: Icon(
+            isFavorite ? Icons.favorite : Icons.favorite_border,
+            color: Colors.white,
+          )
+        ),
     );
   }
 }
