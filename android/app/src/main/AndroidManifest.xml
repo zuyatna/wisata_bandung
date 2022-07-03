@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zuyatna.wisata_bandung">
    <application
-        android:label="wisata_bandung"
+        android:label="Wisata Bandung"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
