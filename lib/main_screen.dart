@@ -9,14 +9,16 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wisata Bandung. Size: ${MediaQuery.of(context).size.width}'),
+        title: const Text('Wisata Bandung'),
       ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           if (constraints.maxWidth <= 600) {
             return const TourismPlaceList();
+          } else if (constraints.maxWidth <= 1200) {
+            return const TourismPlaceGrid(gridCount: 4,);
           } else {
-            return const TourismPlaceGrid();
+            return const TourismPlaceGrid(gridCount: 6);
           }
         },
       ),
@@ -76,13 +78,17 @@ class TourismPlaceList extends StatelessWidget {
 }
 
 class TourismPlaceGrid extends StatelessWidget {
-  const TourismPlaceGrid({Key? key}) : super(key: key);
+  const TourismPlaceGrid({Key? key, required this.gridCount}) : super(key: key);
+
+  final int gridCount;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Scrollbar(thumbVisibility: true, child: Padding(
       padding: const EdgeInsets.all(24.0),
-      child: GridView.count(crossAxisCount: 4,
+      child: GridView.count(crossAxisCount: gridCount,
+        crossAxisSpacing: 16,
+        mainAxisSpacing: 16,
         children: tourismPlaceList.map((place) {
           return InkWell(
             onTap: () {
@@ -117,6 +123,6 @@ class TourismPlaceGrid extends StatelessWidget {
           );
         }).toList(),
       ),
-    );
+    ));
   }
 }
